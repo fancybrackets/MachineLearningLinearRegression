@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flat Price Predictor</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; background-color: #f4f4f4; padding-top: 50px; }
+        .container { background: white; padding: 20px; border-radius: 10px; display: inline-block; box-shadow: 0px 0px 10px #ccc; width: 400px; }
+        h1 { background-color: #4CAF50; color: white; padding: 15px; border-radius: 5px; margin-bottom: 25px; }
+        input { margin: 8px; padding: 10px; width: 80%; border: 1px solid #ccc; border-radius: 4px; }
+        button { background-color: #4CAF50; color: white; padding: 12px 24px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; margin-top: 15px; }
+        button:hover { background-color: #45a049; }
+        .result { margin-top: 25px; font-weight: bold; color: #333; font-size: 1.2em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Predict Flat Price</h1>
+        <form action="{{ url_for('predict')}}" method="post">
+            <input type="number" name="carpet_area" placeholder="Carpet Area (sq ft)" required><br>
+            
+            <input type="number" name="bed_room" placeholder="Number of Bedrooms" required><br>
+            <input type="number" name="kitchen" placeholder="Number of Kitchens" required><br>
+            <input type="number" name="living_room" placeholder="Number of Living Rooms" required><br>
+            <input type="number" name="dining_room" placeholder="Number of Dining Rooms" required><br>
+            <input type="number" name="toilet" placeholder="Number of Toilets" required><br>
+            
+            <button type="submit">Predict Price</button>
+        </form>
+        <div class="result">
+            {{ prediction_text }}
+        </div>
+    </div>
+</body>
+</html>
